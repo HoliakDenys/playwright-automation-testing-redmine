@@ -1,0 +1,52 @@
+name: Playwright Automation Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Playwright Tests
+        run: npm run tests
+
+      - name: Copy Allure data from previous runs
+        run: cp -r allure-results /path/to/allure/results
+
+      - name: Generate Allure Report
+        run: npm run allure:generate
+
+      - name: Open Allure Report
+        run: npm run allure:open
+
+      - name: Commit and Push Report to Another Branch
+        run: |
+          git checkout -b report-branch
+          git add allure-report
+          git commit -m "Add new Allure report"
+          git push --set-upstream origin report-branch
+
+      - name: Setup GitHub Pages
+        run: |
+          git checkout -b gh-pages
+          mv allure-report/ /path/to/gh-pages/
+          git add .
+          git commit -m "Publish Allure report on GitHub Pages"
+          git push --force origin gh-pages
