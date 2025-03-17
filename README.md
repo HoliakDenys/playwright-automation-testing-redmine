@@ -33,10 +33,10 @@ This repository contains an automation testing project built using Playwright an
 
 ## Steps to Launch
 
-1. Run tests in **headless** mode (no browser UI):
-    ```bash
-    npm run tests
-    ```
+    1. Run tests in **headless** mode (no browser UI):
+        ```bash
+        npm run tests
+        ```
 
 2. Run tests in **headed** mode (with browser UI visible):
     ```bash

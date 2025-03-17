@@ -25,7 +25,7 @@ jobs:
         run: npm install
 
       - name: Run Playwright Tests
-        run: npm run tests
+        run: npx playwright test
 
       - name: Copy Allure data from previous runs
         run: cp -r allure-results /path/to/allure/results
