@@ -4,6 +4,11 @@
 
 This repository contains an automation testing project built using Playwright and TypeScript for testing the Redmine website. The project follows the Page Object Model (POM) design pattern and includes test cases for various functionalities of the Redmine web application. The tests are executed using Playwright, and the results are reported using Allure reports.
 
+## Test Cases
+
+Test cases for this project are documented in Google Sheets and can be accessed via the following link:  
+[Redmine Test Cases](https://docs.google.com/spreadsheets/d/1tTsjPJoES6L-wXjXM17TU76gVLsH2x8uE0vObHH99nw/edit?usp=sharing)
+
 ## Requirements
 
 - **Node.js** (version 16 or later)
