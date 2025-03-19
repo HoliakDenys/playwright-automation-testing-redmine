@@ -18,6 +18,22 @@ Test cases for this project are documented in Google Sheets and can be accessed 
 - **dotenv** for environment variable management
 - **ts-node** for running TypeScript files without compilation
 
+## Environment Configuration
+
+This project uses environment variables stored in a `.env` file. A template file `.env.example` is included in the repository to provide an example of the required environment variables.
+
+### Setting Up the `.env` File
+
+1. Copy the example file:
+    ```bash
+    cp .env.example .env
+    ```
+2. Open `.env` and update the variables with the appropriate values:
+    ```ini
+    BASE_URL="https://www.redmine.org/"
+    ```
+3. Save the file.
+
 ## Steps to Install
 
 1. Clone the repository to your local machine:
@@ -38,10 +54,10 @@ Test cases for this project are documented in Google Sheets and can be accessed 
 
 ## Steps to Launch
 
-    1. Run tests in **headless** mode (no browser UI):
-        ```bash
-        npm run tests
-        ```
+1. Run tests in **headless** mode (no browser UI):
+    ```bash
+    npm run tests
+    ```
 
 2. Run tests in **headed** mode (with browser UI visible):
     ```bash
@@ -60,21 +76,21 @@ Test cases for this project are documented in Google Sheets and can be accessed 
 
 ## Steps to Create the Report
 
-1. **Run Tests and Generate Allure Results:**
+1. **Run Tests and Generate Allure Results:**  
     Allure reports are generated automatically when running the tests. You can create the report after tests execution by running the following command:
     ```bash
     npm run allure:generate
     ```
 
-2. **Open Allure Report:**
+2. **Open Allure Report:**  
     After generating the Allure report, you can open it with the following command:
     ```bash
     npm run allure:open
     ```
-
     This will launch the Allure report in your default browser.
     
 ## CI/CD Pipeline (GitHub Actions)
+
 This project is configured with GitHub Actions for CI/CD automation with the following steps:
 
 1. **Install dependencies** – Automatically installs project dependencies using `npm install`.
@@ -85,4 +101,4 @@ This project is configured with GitHub Actions for CI/CD automation with the fol
 6. **Add GitHub Pages to the branch with the report** – The report is then served through GitHub Pages, allowing it to be accessed via a URL.
 
 The report will be accessible at:  
-`https://holiakdenys.github.io/playwright-automation-testing-redmine/`
+[Playwright Automation Testing Report](https://holiakdenys.github.io/playwright-automation-testing-redmine/)
