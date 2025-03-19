@@ -11,6 +11,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      BASE_URL: ‘https://www.redmine.org/‘
 
     steps:
       - name: Checkout code
@@ -25,7 +27,7 @@ jobs:
         run: npm install
 
       - name: Install Playwright browsers
-        run: npx playwright install
+        run: npx playwright install --with-deps
 
       - name: Run Playwright Tests
         run: npm run tests
