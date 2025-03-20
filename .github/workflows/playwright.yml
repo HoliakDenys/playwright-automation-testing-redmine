@@ -48,12 +48,3 @@ jobs:
 
       - name: Generate Allure Report
         run: allure generate allure-results --clean -o allure-report
-
-
-      - name: Setup GitHub Pages
-        run: |
-          git checkout -b gh-pages
-          mv allure-report/* .
-          git add .
-          git commit -m "Publish Allure report on GitHub Pages"
-          git push --force origin gh-pages
