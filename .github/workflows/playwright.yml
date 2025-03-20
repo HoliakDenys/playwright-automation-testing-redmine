@@ -38,8 +38,6 @@ jobs:
       - name: Ensure allure-results directory exists
         run: mkdir -p allure-results
 
-
-
       - name: Upload Allure results as artifact
         uses: actions/upload-artifact@v4
         with:
@@ -48,3 +46,22 @@ jobs:
 
       - name: Generate Allure Report
         run: allure generate allure-results --clean -o allure-report
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Copy Allure report to gh-pages directory
+        run: |
+          mkdir -p gh-pages
+          cp -r allure-report/* gh-pages/
+
+      - name: Deploy report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./gh-pages
