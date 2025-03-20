@@ -56,7 +56,10 @@ jobs:
           git checkout -b report-branch
           git add allure-report
           git commit -m "Add new Allure report"
-          git push --set-upstream origin report-branch --force
+          git push https://github.com/${{ github.repository }}.git HEAD:report-branch --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Setup GitHub Pages
         run: |
