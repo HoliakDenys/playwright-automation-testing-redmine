@@ -38,8 +38,7 @@ jobs:
       - name: Ensure allure-results directory exists
         run: mkdir -p allure-results
 
-      - name: Copy Allure data from previous runs
-        run: cp -r allure-results/* $GITHUB_WORKSPACE/allure-results/
+
 
       - name: Upload Allure results as artifact
         uses: actions/upload-artifact@v4
