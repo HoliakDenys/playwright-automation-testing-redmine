@@ -12,7 +12,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      BASE_URL: ‘https://www.redmine.org/‘
+      BASE_URL: "https://www.redmine.org/"
 
     steps:
       - name: Checkout code
