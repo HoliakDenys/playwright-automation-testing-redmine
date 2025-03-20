@@ -39,7 +39,7 @@ jobs:
         run: cp -r allure-results/* $GITHUB_WORKSPACE/allure-results/
 
       - name: Upload Allure results as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: allure-results
