@@ -49,17 +49,6 @@ jobs:
       - name: Generate Allure Report
         run: allure generate allure-results --clean -o allure-report
 
-      - name: Commit and Push Report to Another Branch
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git checkout -b report-branch
-          git add allure-report
-          git commit -m "Add new Allure report"
-          git push https://github.com/${{ github.repository }}.git HEAD:report-branch --force
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 
       - name: Setup GitHub Pages
         run: |
