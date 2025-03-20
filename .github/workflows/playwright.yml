@@ -32,26 +32,34 @@ jobs:
       - name: Run Playwright Tests
         run: npm run tests
 
+      - name: Ensure allure-results directory exists
+        run: mkdir -p allure-results
+
       - name: Copy Allure data from previous runs
-        run: cp -r allure-results /path/to/allure/results
+        run: cp -r allure-results/* $GITHUB_WORKSPACE/allure-results/
+
+      - name: Upload Allure results as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: allure-results
 
       - name: Generate Allure Report
         run: npm run allure:generate
 
-      - name: Open Allure Report
-        run: npm run allure:open
-
       - name: Commit and Push Report to Another Branch
         run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
           git checkout -b report-branch
           git add allure-report
           git commit -m "Add new Allure report"
-          git push --set-upstream origin report-branch
+          git push --set-upstream origin report-branch --force
 
       - name: Setup GitHub Pages
         run: |
           git checkout -b gh-pages
-          mv allure-report/ /path/to/gh-pages/
+          mv allure-report/* .
           git add .
           git commit -m "Publish Allure report on GitHub Pages"
           git push --force origin gh-pages
